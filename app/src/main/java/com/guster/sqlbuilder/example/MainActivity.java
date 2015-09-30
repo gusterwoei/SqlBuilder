@@ -1,7 +1,7 @@
 package com.guster.sqlbuilder.example;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import com.guster.sqlbuilder.SqlBuilder;
 
@@ -9,7 +9,7 @@ import com.guster.sqlbuilder.SqlBuilder;
  * Created by Gusterwoei on 9/30/15.
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
