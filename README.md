@@ -19,7 +19,7 @@ dependencies {
 
 ## Example
 
-``java
+```java
 String query = SqlBuilder.newInstance()
                 .select("u.*", "COUNT(p.*)")
                 .from("users", "u")
