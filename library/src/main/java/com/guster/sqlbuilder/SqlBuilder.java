@@ -33,7 +33,8 @@ import java.util.Map;
  *
  */
 public class SqlBuilder {
-    private String clauseDivider = "\n";
+    private static final String DEFAULT_DIVIDER = "\n";
+    private static String clauseDivider = DEFAULT_DIVIDER;
     private String query = "";
     private StringBuilder allQuery = new StringBuilder();
     private HashMap<String, Object> bindValues = new HashMap<String, Object>();
@@ -55,10 +56,10 @@ public class SqlBuilder {
      * @param clauseDivider - clause divider string
      *
      */
-    public void setClauseDivider(String clauseDivider) {
+    public static void setClauseDivider(String clauseDivider) {
         if(clauseDivider == null || clauseDivider.isEmpty())
-            clauseDivider = "\n";
-        this.clauseDivider = clauseDivider;
+            clauseDivider = DEFAULT_DIVIDER;
+        SqlBuilder.clauseDivider = clauseDivider;
     }
 
     /**
