@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.guster:sqlbuilder:1.0.0'
+    compile 'com.guster:sqlbuilder:1.0.4'
 }
 ...
 ```
@@ -32,7 +32,7 @@ String query = SqlBuilder.newInstance()
                 .orderBy("u.username")
                 .bindValue("userId", "user123")
                 .bindValue("status", 1)
-                .build().getQuery();
+                .getQuery();
 ```
 
 # Developed by
