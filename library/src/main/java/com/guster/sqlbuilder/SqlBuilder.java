@@ -38,6 +38,7 @@ public class SqlBuilder {
     private String query = "";
     private StringBuilder allQuery = new StringBuilder();
     private HashMap<String, Object> bindValues = new HashMap<String, Object>();
+    private boolean isBuilt;
 
     private SqlBuilder() {}
 
@@ -459,12 +460,19 @@ public class SqlBuilder {
      * @return SqlBuilder
      *
      */
-    public SqlBuilder build() {
+    protected SqlBuilder build() {
+        if(isBuilt) {
+            Util.logd("Query has already been built.");
+            return this;
+        }
+
         query = allQuery.toString();
         bindQueryValues();
 
         // after building, clear the query string builder
         allQuery = new StringBuilder();
+
+        isBuilt = true;
 
         return this;
     }
@@ -476,6 +484,7 @@ public class SqlBuilder {
      *
      */
     public String getQuery() {
+        build();
         return query;
     }
 

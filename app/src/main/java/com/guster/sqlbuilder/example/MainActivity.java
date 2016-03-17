@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
                 .orderBy("u.username")
                 .bindValue("userId", "user123")
                 .bindValue("status", 1)
-                .build().getQuery();
-        Log.d("SQLBUILDER", "query: " + query);
+                .getQuery();
+        Log.d("SQL_BUILDER", "query: " + query);
     }
 }
