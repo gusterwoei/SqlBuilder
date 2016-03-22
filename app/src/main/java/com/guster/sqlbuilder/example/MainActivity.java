@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
                 .leftJoin("p", "comments", "c", "c.post_id = p.post_id")
                 .where("u.user_id = :userId")
                 .andWhere("u.status = :status")
+                .andWhereIn("u.first_name", "Kevin", "Josh", "Brandon")
                 .groupBy("u.user_id")
                 .orderBy("u.username")
                 .bindValue("userId", "user123")
