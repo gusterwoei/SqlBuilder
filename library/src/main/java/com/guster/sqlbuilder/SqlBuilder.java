@@ -135,6 +135,12 @@ public class SqlBuilder {
         return this;
     }
 
+    public SqlBuilder whereIn(String column, String ... values) {
+        allQuery.append(clauseDivider);
+        allQuery.append("WHERE " + column + " IN " + arrayToCommaSeparatedString(values));
+        return this;
+    } 
+
     /**
      * Create a OR-related WHERE statement
      *
@@ -144,9 +150,11 @@ public class SqlBuilder {
      */
     public SqlBuilder orWhere(String where) {
         allQuery.append(" OR " + where + " ");
-        /*if(whereQuery.length() > 0)
-            whereQuery.append(" ");
-        whereQuery.append("OR " + where);*/
+        return this;
+    }
+
+    public SqlBuilder orWhereIn(String column, String ... values) {
+        allQuery.append(" OR " + column + " IN " + arrayToCommaSeparatedString(values));
         return this;
     }
 
@@ -159,9 +167,11 @@ public class SqlBuilder {
      */
     public SqlBuilder andWhere(String where) {
         allQuery.append(" AND " + where + " ");
-        /*if(whereQuery.length() > 0)
-            whereQuery.append(" ");
-        whereQuery.append("AND " + where);*/
+        return this;
+    }
+
+    public SqlBuilder andWhereIn(String column, String ... values) {
+        allQuery.append(" AND " + column + " IN " + arrayToCommaSeparatedString(values));
         return this;
     }
 
@@ -331,7 +341,7 @@ public class SqlBuilder {
         return this;
     }
 
-    /*public static String getInsertStmnt(String tableName, Object ... vals) {
+    /*public static String arrayToCommaSeparatedString(String tableName, Object ... vals) {
         String stmnt = "INSERT INTO " + tableName + " VALUES (";
         for(int i=0; i<vals.length; i++) {
             stmnt += "'" + vals[i] + "'";
@@ -343,7 +353,7 @@ public class SqlBuilder {
         stmnt += "); ";
         return stmnt;
     }*/
-    public static String getInsertStmnt(Object... vals) {
+    public static String arrayToCommaSeparatedString(Object... vals) {
         String stmnt = "(";
         for(int i=0; i<vals.length; i++) {
             Object value = vals[i];

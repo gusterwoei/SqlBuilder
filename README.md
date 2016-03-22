@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.guster:sqlbuilder:1.0.4'
+    compile 'com.guster:sqlbuilder:1.1.0'
 }
 ...
 ```
@@ -28,6 +28,7 @@ String query = SqlBuilder.newInstance()
                 .leftJoin("p", "comments", "c", "c.post_id = p.post_id")
                 .where("u.user_id = :userId")
                 .andWhere("u.status = :status")
+                .andWhereIn("u.first_name", "Kevin", "Josh", "Brandon")
                 .groupBy("u.user_id")
                 .orderBy("u.username")
                 .bindValue("userId", "user123")
